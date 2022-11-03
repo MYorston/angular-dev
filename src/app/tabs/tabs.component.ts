@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Character } from '../app.modal'
+import { Character, Alignment } from '../app.modal';
+import { StarWarsService } from '../star-wars.service';
 
 @Component({
   selector: 'app-tabs',
@@ -7,33 +8,22 @@ import { Character } from '../app.modal'
   styleUrls: ['./tabs.component.css']
 })
 export class TabsComponent implements OnInit {
-  characters: Character[] = [
-    {
-      name: 'Ben Solo',
-      alignment: 'light'
-    },
-    {
-      name: 'Kylo Ren',
-      alignment: 'dark'
-    },
-  ];
-  tab: string = 'all';
+  characters: Character[] = [];
+  tab: Alignment = 'all';
 
-  constructor() { }
+  constructor(private starWarsService: StarWarsService) { }
 
   ngOnInit(): void {
   }
 
-  setTab(side: string){
+  setTab(side: Alignment){
     this.tab = side;
+    this.getCharacters();
   }
 
   getCharacters(){
-    if(this.tab == 'all'){
-      return this.characters
-    }
-
-    return this.characters.filter( (char) => char.alignment == this.tab);
+    this.characters = this.starWarsService.getCharacters(this.tab);
+    return this.characters;
   }
 
   onSideAssigned(charInfo: Character){

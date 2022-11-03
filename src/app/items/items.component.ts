@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Character } from '../app.modal'
+import { StarWarsService } from '../star-wars.service';
 
 @Component({
   selector: 'app-items',
@@ -8,15 +9,15 @@ import { Character } from '../app.modal'
 })
 export class ItemsComponent implements OnInit {
   @Input() character: Character = {name: 'Test', alignment: 'light'};
-@Output() sideAssigned = new EventEmitter<Character>();
-  constructor() { 
+
+  constructor(private starWarsService: StarWarsService) { 
   }
 
   ngOnInit(): void {
   }
 
   onAsign(side: 'light' | 'dark'){
-    this.sideAssigned.emit({ ...this.character, alignment: side });
+    this.starWarsService.updateAlignment({ ...this.character, alignment: side });
   }
 
 }

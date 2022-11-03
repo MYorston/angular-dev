@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Character } from '../app.modal'
 @Component({
   selector: 'app-list',
@@ -7,15 +7,9 @@ import { Character } from '../app.modal'
 })
 export class ListComponent implements OnInit {
   @Input() characters: Character[] = [];
-  @Output() sideAssigned = new EventEmitter<Character>();
   
   constructor() { }
 
   ngOnInit(): void {
   }
-
-  onSideAssigned(CharInfo: Character){
-    this.sideAssigned.emit( CharInfo );
-  }
-
 }

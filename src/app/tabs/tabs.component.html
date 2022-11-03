@@ -4,5 +4,5 @@
     <li role="presentation" [ngClass]="{active: tab ==='light'}" (click)="setTab('light')"><a href="#">Light</a></li>
     <li role="presentation" [ngClass]="{active: tab ==='dark'}" (click)="setTab('dark')"><a href="#">Dark</a></li>
   </ul>
-  <app-list [characters]="getCharacters()" (sideAssigned)="onSideAssigned($event)"></app-list>
+  <app-list [characters]="getCharacters()"></app-list>
 </div>

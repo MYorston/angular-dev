@@ -36,4 +36,15 @@ export class StarWarsService {
 
     this.log.writeLog('Changed ' + charInfo.name + ' side to ' + charInfo.alignment);
   }
+
+  addCharacter(charInfo: Character){
+    const pos = this.characters.findIndex( (char) => charInfo.name == char.name);
+
+    if( pos !== -1) {
+      return;
+    }
+
+    this.characters.push(charInfo);
+    console.log('this.characters: ', this.characters)
+  }
 }

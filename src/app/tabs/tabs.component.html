@@ -1,8 +1,8 @@
 <div class="">
   <ul class="nav nav-tabs">
-    <li role="presentation" [ngClass]="{active: tab ==='all'}" (click)="setTab('all')"><a href="#">All</a></li>
-    <li role="presentation" [ngClass]="{active: tab ==='light'}" (click)="setTab('light')"><a href="#">Light</a></li>
-    <li role="presentation" [ngClass]="{active: tab ==='dark'}" (click)="setTab('dark')"><a href="#">Dark</a></li>
+    <li role="presentation" routerLinkActive="active"><a routerLink="/characters/all">All</a></li>
+    <li role="presentation" routerLinkActive="active"><a routerLink="/characters/light">Light</a></li>
+    <li role="presentation" routerLinkActive="active"><a routerLink="/characters/dark">Dark</a></li>
   </ul>
-  <app-list [characters]="getCharacters()"></app-list>
+  <router-outlet></router-outlet>
 </div>
